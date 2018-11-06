@@ -1,20 +1,30 @@
 package application.ActiveObject.Implementations;
 
-import application.ActiveObject.Interfaces.Generator;
-import application.ActiveObject.Interfaces.GeneratorAsync;
-import application.ActiveObject.Interfaces.ObsGeneratorAsync;
-
 import java.util.concurrent.Future;
 
-public class Canal implements ObsGeneratorAsync, GeneratorAsync {
+import application.ActiveObject.Interfaces.IGenerator;
+import application.ActiveObject.Interfaces.IGeneratorAsync;
+import application.ActiveObject.Interfaces.IObsGeneratorAsync;
 
-    @Override
-    public Future getValue() {
-        return null;
-    }
+/**
+ * 
+ * @author DESCHAMPS Mathieu && LARZILLIERE Charles
+ * Canal class Proxy role for update and get
+ *
+ */
+public class Canal implements IObsGeneratorAsync, IGeneratorAsync {
 
-    @Override
-    public Future update(Generator generator) {
-        return null;
-    }
+	@Override
+	public Future<Integer> getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Future<Integer> update(IGenerator generator) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+   
 }

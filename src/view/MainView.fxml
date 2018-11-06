@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.MainViewController">
    <children>
       <Pane layoutX="-80.0" layoutY="-67.0" prefHeight="406.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <BorderPane prefHeight="406.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -22,22 +22,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="161.0" prefWidth="353.0" text="0" textAlignment="CENTER">
+                  <Label id="canal1" fx:id="canal1" alignment="CENTER" contentDisplay="CENTER" prefHeight="161.0" prefWidth="353.0" text="0" textAlignment="CENTER">
                      <font>
                         <Font size="96.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="174.0" prefWidth="389.0" text="0" GridPane.columnIndex="1">
+                  <Label id="canal2" fx:id="canal2" alignment="CENTER" prefHeight="174.0" prefWidth="389.0" text="0" GridPane.columnIndex="1">
                      <font>
                         <Font size="96.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="219.0" prefWidth="363.0" text="0" GridPane.rowIndex="1">
+                  <Label id="canal3" fx:id="canal3" alignment="CENTER" prefHeight="219.0" prefWidth="363.0" text="0" GridPane.rowIndex="1">
                      <font>
                         <Font size="96.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="103.0" prefWidth="442.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label id="canal4" fx:id="canal4" alignment="CENTER" prefHeight="103.0" prefWidth="442.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="96.0" />
                      </font>
@@ -48,17 +48,21 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="320.0" text="Start" />
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="304.0" text="Stop" />
+                  <Button fx:id="startButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="320.0" text="Start" />
+                  <Button fx:id="stopButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="304.0" text="Stop" />
                </children>
             </HBox>
          </bottom>
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="62.0" prefWidth="175.0" text="RadioButton" />
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="178.0" text="RadioButton" />
-                  <RadioButton mnemonicParsing="false" prefHeight="57.0" prefWidth="236.0" text="RadioButton" />
+                  <RadioButton fx:id="strategy1" mnemonicParsing="false" prefHeight="62.0" prefWidth="175.0" text="RadioButton">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="radioGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="strategy2" mnemonicParsing="false" prefHeight="61.0" prefWidth="178.0" text="RadioButton" toggleGroup="$radioGroup" />
+                  <RadioButton fx:id="strategy3" mnemonicParsing="false" prefHeight="57.0" prefWidth="236.0" text="RadioButton" toggleGroup="$radioGroup" />
                </children>
             </HBox>
          </top>

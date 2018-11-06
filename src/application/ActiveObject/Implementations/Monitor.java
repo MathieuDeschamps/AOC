@@ -1,11 +1,19 @@
 package application.ActiveObject.Implementations;
 
-import application.ActiveObject.Interfaces.Generator;
-import application.ActiveObject.Interfaces.ObsGenerator;
+import application.ActiveObject.Interfaces.IGenerator;
+import application.ActiveObject.Interfaces.IObsGenerator;
 
-public class Monitor implements ObsGenerator {
-    @Override
-    public void update(Generator generator) {
+/**
+ * 
+ * @author DESCHAMPS MAthieu && LARZILLIERE Charles
+ *
+ */
+public class Monitor implements IObsGenerator {
 
-    }
+	@Override
+	public void update(IGenerator generator) {
+		// TODO Auto-generated method stub
+		
+	}
+   
 }
