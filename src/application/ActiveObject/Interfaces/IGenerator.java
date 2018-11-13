@@ -23,14 +23,14 @@ public interface IGenerator {
 	 *
 	 * @param observer
 	 */
-	public void attach(IObsGenerator observer);
+	public void attach(IObsGeneratorAsync observer);
 
 
 	/**
 	 *
 	 * @param observer
 	 */
-	public void detach(IObsGenerator observer);
+	public void detach(IObsGeneratorAsync observer);
 
 
 	public List<IObsGeneratorAsync> getObservers();
