@@ -12,34 +12,63 @@ public class Generator implements IGenerator {
 
     private int value;
 
-    private List<IObsGeneratorAsync> observers = new ArrayList<>();
+    //private IAlgoDiffusion diffusion;
+
+    private List<IObsGeneratorAsync> observerList = new ArrayList<>();
+
+    /**
+     * Generate a random value between 0 and 100
+     */
+    public void generate(){
+        setValue((int) Math.random()*100);
+    }
 
 
+    /**
+     * Return la valeur de value
+     * @return Int value
+     */
     @Override
     public int getValue() {
         return value;
     }
 
+    /**
+     * Ajoute l'observer dans la liste
+     * @param observer
+     */
     @Override
-    public void attach(IObsGenerator observer) {
-
+    public void attach(IObsGeneratorAsync observer) {
+        observerList.add(observer);
     }
 
+    /**
+     * Supprimer l'observer de la liste
+     * @param observer
+     */
     @Override
-    public void detach(IObsGenerator observer) {
-
+    public void detach(IObsGeneratorAsync observer) {
+        observerList.add(observer);
     }
 
+    /**
+     *
+     * @return la liste des observer
+     */
+    @Override
+    public List<IObsGeneratorAsync> getObservers() {
+        return observerList;
+    }
+
+    /**
+     * Change la valeur value et execute la diffusion
+     * @param value
+     */
     public void setValue(int value){
         this.value = value;
-        //faire le execute de DiffusionAtomique(generator)
+        //diffusion.execute(this)
     }
 
-	@Override
-	public List<IObsGeneratorAsync> getObservers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }
