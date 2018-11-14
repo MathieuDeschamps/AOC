@@ -4,6 +4,7 @@ import application.ActiveObject.Interfaces.IGenerator;
 import application.ActiveObject.Interfaces.IObsGenerator;
 import application.ActiveObject.Interfaces.IObsGeneratorAsync;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,6 +34,12 @@ public class Generator implements IGenerator {
         this.value = value;
         //faire le execute de DiffusionAtomique(generator)
     }
+
+	@Override
+	public List<IObsGeneratorAsync> getObservers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
