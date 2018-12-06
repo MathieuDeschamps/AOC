@@ -1,18 +1,20 @@
 package application.ActiveObject.Implementations;
 
-import application.ActiveObject.Interfaces.IGenerator;
-import application.ActiveObject.Interfaces.IObsGenerator;
-import application.ActiveObject.Interfaces.IObsGeneratorAsync;
+import application.ActiveObject.Interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Generator implements IGenerator {
+/**
+ *
+ * @author DESCHAMPS Mathieu & LARZILLIÈRE Charles
+ *
+ */
+public class Generator implements IGenerator, IDiffusionGen {
 
     private int value;
 
-    //private IAlgoDiffusion diffusion;
+    private IAlgoDIffusion diffusion;
 
     private List<IObsGeneratorAsync> observerList = new ArrayList<>();
 
@@ -66,9 +68,12 @@ public class Generator implements IGenerator {
      */
     public void setValue(int value){
         this.value = value;
-        //diffusion.execute(this)
+        diffusion.configure(this);
+        diffusion.execute();
     }
 
 
-
+    public IAlgoDIffusion getDiffusion() {
+        return diffusion;
+    }
 }

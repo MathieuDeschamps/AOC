@@ -25,10 +25,12 @@ public class Canal implements IObsGeneratorAsync, IGeneratorAsync {
 
 	private ScheduledExecutorService executorService;
 
+	private IGenerator generator;
+
 	@Override
 	public Future<Integer> getValue() {
-		// TODO Auto-generated method stub
-		return null;
+		GetValueCallable gvc = new GetValueCallable(this, generator);
+		return executorService.schedule(gvc, 5000, TimeUnit.MILLISECONDS);
 	}
 
 	@Override

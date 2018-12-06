@@ -39,5 +39,8 @@ public interface IGenerator {
 	 */
 	public List<IObsGeneratorAsync> getObservers();
 
+	public IAlgoDIffusion getDiffusion();
+
+
 
 }
