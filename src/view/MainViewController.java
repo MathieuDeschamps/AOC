@@ -30,6 +30,11 @@ public class MainViewController {
 	@FXML
 	RadioButton strategy3;
 	
+	public static final String CANAL_1 = "canal1";
+	public static final String CANAL_2 = "canal2";
+	public static final String CANAL_3 = "canal3";
+	public static final String CANAL_4 = "canal4";
+	
 
 	@FXML
 	private void initialize(){

@@ -33,6 +33,10 @@ public interface IGenerator {
 	public void detach(IObsGeneratorAsync observer);
 
 
+	/**
+	 * 
+	 * @return List<IObsGeneratorAsync>
+	 */
 	public List<IObsGeneratorAsync> getObservers();
 
 

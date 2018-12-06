@@ -12,6 +12,8 @@ import java.util.concurrent.Callable;
  */
 public class UpdateCallable implements Callable {
 
+	private Canal canal;
+	private ObsGenerator obsgGen;
     @Override
     public Object call() throws Exception {
 
@@ -20,6 +22,6 @@ public class UpdateCallable implements Callable {
     }
 
     public void update(IGenerator generator){
-
+    	
     }
 }

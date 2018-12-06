@@ -5,32 +5,73 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 import application.ActiveObject.Interfaces.IAlgoDIffusion;
-import application.ActiveObject.Interfaces.IGenerator;
-
+import application.ActiveObject.Interfaces.IDiffusionGen;
+import application.ActiveObject.Interfaces.IGeneratorAsync;
+/**
+ * 
+ * @author DESCHAMPS Mathieu && LARZILLIERE Charles
+ * 
+ * Algo de diffusion atomique
+ *
+ */
 public class DiffusionAtomique implements IAlgoDIffusion {
 	
-	IGenerator generator;
-	Canal canal;
+	
+	private Integer value;
+	
+	private List<IGeneratorAsync> asyncGenerators;
+	private IDiffusionGen generator;
+	private int monitor_number;
+	
 	
 
-	
+	public DiffusionAtomique( List<IGeneratorAsync> asyncGenerators) {
+		this.asyncGenerators = asyncGenerators;
+	}
 
 	@Override
 	public List<Future<Integer>> execute( ) {
 		
-		List<Future<Integer>> returnFuture = new ArrayList<>( );
-		generator.getObservers().forEach( obs -> returnFuture.add( obs.update( generator ) ) );
+		List<Future<Integer>> returnFutures = new ArrayList<>( );
+		value = generator.getValue();
+		asyncGenerators = new ArrayList<>();
+		monitor_number = generator.getObservers().size();
 		
-		return returnFuture;
+		
+		generator.getObservers().forEach( obs -> returnFutures.add( obs.update( generator ) ) );
+		
+		return returnFutures;
 	}
 	
 	
 
 	@Override
-	public void configure( IGenerator generator) {
+	public void configure( IDiffusionGen generator ) {
 	
 		this.generator = generator;
 						
+	}
+
+
+
+	@Override
+	public boolean verify() {
+		
+		if( asyncGenerators == null || (asyncGenerators.size() != monitor_number ) ){
+			return false;
+		}
+		return true;
+	}
+
+
+
+	@Override
+	public Integer getValue(IGeneratorAsync generator) {
+		
+		if (!asyncGenerators.contains(generator)) {
+			asyncGenerators.add(generator);
+		}
+		return value;
 	}
 
 }

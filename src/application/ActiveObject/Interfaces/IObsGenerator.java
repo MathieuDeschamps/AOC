@@ -3,7 +3,7 @@ package application.ActiveObject.Interfaces;
 /**
  * 
  * @author DESCHAMPS Mathieu && LARZILLIERE Charles
- *Observer genartor interface (servant role for update, client role for get)
+ *Observer generator interface (servant role for update, client role for get)
  */
 public interface IObsGenerator {
 

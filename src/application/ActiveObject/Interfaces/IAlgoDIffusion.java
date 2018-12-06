@@ -21,7 +21,20 @@ public interface IAlgoDIffusion {
 	/**
 	 * configure algoDiffusion
 	 */
-	public void configure( IGenerator generator );
+	public void configure( IDiffusionGen generator );
+	
+	/**
+	 * Verify if a new value can be generate
+	 * @return a value can be generate
+	 */
+	public boolean verify( );
+	
+	/**
+	 * 
+	 * @param generator the generator
+	 * @return the generator's values
+	 */
+	Integer getValue( IGeneratorAsync generator );
 	
 	
 	
