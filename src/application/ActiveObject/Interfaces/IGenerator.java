@@ -20,15 +20,15 @@ public interface IGenerator {
 
 
 	/**
-	 *
-	 * @param observer
+	 * Attach an observer
+	 * @param observerAsync
 	 */
 	public void attach(IObsGeneratorAsync observer);
 
 
 	/**
-	 *
-	 * @param observer
+	 *Detach an observer
+	 * @param observerAsync
 	 */
 	public void detach(IObsGeneratorAsync observer);
 
@@ -39,7 +39,18 @@ public interface IGenerator {
 	 */
 	public List<IObsGeneratorAsync> getObservers();
 
+	/**
+	 * 
+	 * @return the Diffusion
+	 */
 	public IAlgoDIffusion getDiffusion();
+	
+	public void setDiffusion (IAlgoDIffusion algo);
+	
+	/**
+	 * Generate a new value
+	 */
+	public void generate( );
 
 
 

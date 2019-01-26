@@ -17,13 +17,14 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("AOC Project");
+			primaryStage.setResizable(false);
 			primaryStage.show();	
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main( String[] args ) {
 		launch(args);
 	}
 }

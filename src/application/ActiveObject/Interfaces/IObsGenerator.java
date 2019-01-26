@@ -11,5 +11,5 @@ public interface IObsGenerator {
 	 * 
 	 * @param generator generator to update
 	 */
-    public void update(IGenerator generator);
+    public void update(IGeneratorAsync generatorAsync);
 }

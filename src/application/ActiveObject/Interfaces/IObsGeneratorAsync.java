@@ -11,7 +11,7 @@ public interface IObsGeneratorAsync {
 	/**
 	 * 
 	 * @param generator generator to update 
-	 * @return Future<Integer>
+	 * @return Future<Void>
 	 */
-    public Future<Integer> update (IGenerator generator);
+    public Future<Void> update (IGenerator generator);
 }

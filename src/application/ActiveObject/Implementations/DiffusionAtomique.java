@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import javax.xml.ws.WebServiceException;
+
 import application.ActiveObject.Interfaces.IAlgoDIffusion;
 import application.ActiveObject.Interfaces.IDiffusionGen;
 import application.ActiveObject.Interfaces.IGeneratorAsync;
@@ -14,31 +16,41 @@ import application.ActiveObject.Interfaces.IGeneratorAsync;
  * Algo de diffusion atomique
  *
  */
-public class DiffusionAtomique implements IAlgoDIffusion {
+public class DiffusionAtomique implements IAlgoDIffusion
+{
 	
 	
 	private Integer value;
 	
-	private List<IGeneratorAsync> asyncGenerators;
-	private IDiffusionGen generator;
+	private List<IGeneratorAsync> asyncGenerators = new ArrayList<>();
+	private IDiffusionGen difGenerator;
 	private int monitor_number;
 	
 	
 
-	public DiffusionAtomique( List<IGeneratorAsync> asyncGenerators) {
-		this.asyncGenerators = asyncGenerators;
-	}
+	
 
 	@Override
-	public List<Future<Integer>> execute( ) {
+	public List<Future<Void>> execute( ) 
+	{
 		
-		List<Future<Integer>> returnFutures = new ArrayList<>( );
-		value = generator.getValue();
+		if( asyncGenerators.size() == monitor_number )
+		{
+			asyncGenerators = new ArrayList<>( );
+			value = difGenerator.getValue( );				
+		}
+		else
+		{
+			return null;
+		}
+
+		List<Future<Void>> returnFutures = new ArrayList<>( );
+		value = difGenerator.getValue();
 		asyncGenerators = new ArrayList<>();
-		monitor_number = generator.getObservers().size();
+		monitor_number = difGenerator.getObservers().size();
 		
 		
-		generator.getObservers().forEach( obs -> returnFutures.add( obs.update( generator ) ) );
+		difGenerator.getObservers().forEach( obs -> returnFutures.add( obs.update( difGenerator ) ) );
 		
 		return returnFutures;
 	}
@@ -46,30 +58,22 @@ public class DiffusionAtomique implements IAlgoDIffusion {
 	
 
 	@Override
-	public void configure( IDiffusionGen generator ) {
+	public void configure( IDiffusionGen difGenerator ) 
+	{
 	
-		this.generator = generator;
+		this.difGenerator = difGenerator;
 						
 	}
 
 
 
 	@Override
-	public boolean verify() {
+	public Integer getValue( IGeneratorAsync generator ) 
+	{
 		
-		if( asyncGenerators == null || (asyncGenerators.size() != monitor_number ) ){
-			return false;
-		}
-		return true;
-	}
-
-
-
-	@Override
-	public Integer getValue(IGeneratorAsync generator) {
-		
-		if (!asyncGenerators.contains(generator)) {
-			asyncGenerators.add(generator);
+		if ( !asyncGenerators.contains( generator ) ) 
+		{
+			asyncGenerators.add( generator );
 		}
 		return value;
 	}

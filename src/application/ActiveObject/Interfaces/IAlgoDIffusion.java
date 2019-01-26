@@ -7,7 +7,7 @@ import java.util.concurrent.Future;
  * 
  * @author DESCHAMPS Mathieu
  *
- *AlgoDiffusion interface - Strategy role for Startegy DP
+ *AlgoDiffusion interface - Strategy role for Strategy DP
  */
 public interface IAlgoDIffusion {
 	
@@ -15,7 +15,7 @@ public interface IAlgoDIffusion {
 	/**
 	 * execute algodiffusion
 	 */
-	public List<Future<Integer>> execute();
+	public List<Future<Void>> execute();
 	
 	
 	/**
@@ -23,11 +23,6 @@ public interface IAlgoDIffusion {
 	 */
 	public void configure( IDiffusionGen generator );
 	
-	/**
-	 * Verify if a new value can be generate
-	 * @return a value can be generate
-	 */
-	public boolean verify( );
 	
 	/**
 	 * 

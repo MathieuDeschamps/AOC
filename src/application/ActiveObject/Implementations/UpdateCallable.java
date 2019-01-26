@@ -1,8 +1,7 @@
 package application.ActiveObject.Implementations;
 
-import application.ActiveObject.Interfaces.IGenerator;
-
-import java.util.concurrent.Callable;
+import application.ActiveObject.Interfaces.ICallableUpdate;
+import application.ActiveObject.Interfaces.IObsGenerator;
 
 /**
  * 
@@ -10,18 +9,22 @@ import java.util.concurrent.Callable;
  *
  * UpdateCallable class concrete MI role for getValue
  */
-public class UpdateCallable implements Callable {
+public class UpdateCallable implements ICallableUpdate {
 
 	private Canal canal;
-	private ObsGenerator obsgGen;
-    @Override
-    public Object call() throws Exception {
+	private IObsGenerator obsgGen;
+	
+	public UpdateCallable( Canal canal, IObsGenerator obsGenerator) {
+		this.canal = canal;
+		this.obsgGen = obsGenerator;
+	}
 
-        // @TODO faire le update de g sur le monitor ?
-        return null;
-    }
+	@Override
+	public Void call() throws Exception {
+		obsgGen.update(canal);
+		return null;
+	}
+   
 
-    public void update(IGenerator generator){
-    	
-    }
+    
 }

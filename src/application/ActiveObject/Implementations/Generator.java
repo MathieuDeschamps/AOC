@@ -4,76 +4,83 @@ import application.ActiveObject.Interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
- * @author DESCHAMPS Mathieu & LARZILLIÈRE Charles
+ * @author DESCHAMPS Mathieu && (De) LARZILLIÈRE Charles
+ * Generator implementation
  *
  */
-public class Generator implements IGenerator, IDiffusionGen {
+public class Generator implements IDiffusionGen 
+{
 
     private int value;
 
     private IAlgoDIffusion diffusion;
-
+    
     private List<IObsGeneratorAsync> observerList = new ArrayList<>();
 
-    /**
-     * Generate a random value between 0 and 100
-     */
-    public void generate(){
-        setValue((int) Math.random()*100);
+    
+    public Generator(IAlgoDIffusion algoDifusion) {
+    	diffusion = algoDifusion;
     }
-
-
-    /**
-     * Return la valeur de value
-     * @return Int value
-     */
+    
     @Override
-    public int getValue() {
+    public int getValue( ) 
+    {
         return value;
     }
 
     /**
-     * Ajoute l'observer dans la liste
+     * add the obserer in this.observerList
      * @param observer
      */
     @Override
-    public void attach(IObsGeneratorAsync observer) {
-        observerList.add(observer);
+    public void attach( IObsGeneratorAsync observer ) 
+    {
+        observerList.add( observer );
     }
 
     /**
-     * Supprimer l'observer de la liste
+     * Remove the observer from the list
      * @param observer
      */
     @Override
-    public void detach(IObsGeneratorAsync observer) {
-        observerList.add(observer);
+    public void detach( IObsGeneratorAsync observer )
+    {
+        observerList.remove( observer );
     }
 
     /**
      *
-     * @return la liste des observer
+     * @return the observer list
      */
     @Override
-    public List<IObsGeneratorAsync> getObservers() {
+    public List<IObsGeneratorAsync> getObservers( )
+    {
         return observerList;
     }
 
-    /**
-     * Change la valeur value et execute la diffusion
-     * @param value
-     */
-    public void setValue(int value){
-        this.value = value;
-        diffusion.configure(this);
-        diffusion.execute();
-    }
+   
 
-
-    public IAlgoDIffusion getDiffusion() {
+    @Override
+    public IAlgoDIffusion getDiffusion( ) 
+    {
         return diffusion;
     }
+
+	@Override
+	public void generate( )
+	{
+		this.value = new Random( ).nextInt( 20 );
+		diffusion.configure(this);
+		diffusion.execute();		
+	}
+
+	@Override
+	public void setDiffusion(IAlgoDIffusion algo) {
+		diffusion = algo;
+		
+	}
 }

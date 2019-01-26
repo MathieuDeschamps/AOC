@@ -8,6 +8,6 @@ import java.util.concurrent.Callable;
  * Interface Callable
  *
  */
-public interface ICallableUpdate extends Callable<Integer> {
+public interface ICallableUpdate extends Callable<Void> {
 
 }
