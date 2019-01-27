@@ -52,6 +52,7 @@ public class Monitor implements IMonitor {
 	@Override
 	public void notify(Integer value) {
 		
+		// Handle IllegalStateException.
 		Platform.runLater(()->{
 			monitorObservers.forEach(obs -> {
 				obs.update(nMonitor, value);
