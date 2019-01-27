@@ -5,7 +5,7 @@ import java.util.concurrent.Future;
 
 /**
  * 
- * @author DESCHAMPS Mathieu
+ * @author DESCHAMPS Mathieu && LARZILLIERE Charles
  *
  *AlgoDiffusion interface - Strategy role for Strategy DP
  */

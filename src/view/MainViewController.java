@@ -13,7 +13,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-
+/**
+ * 
+ * @author DESCHAMPS Mathieu && LARZILLIERE Charles
+ * Controller of the IHM and Observer of the monitors
+ *
+ */
 public class MainViewController implements IMonitorObserver {
 	
 	@FXML
@@ -61,7 +66,7 @@ public class MainViewController implements IMonitorObserver {
 	private IMonitor monitor4;
 
 	@FXML
-	private void initialize(	){
+	private void initialize(){
 		
 		algoDiffusion = new DiffusionAtomique( );
 		generator = new Generator( algoDiffusion );
@@ -93,7 +98,7 @@ public class MainViewController implements IMonitorObserver {
 		strategy2.setDisable(true);
 		
 		/**
-		 * Generate a new value on the click
+		 * Click events hndling
 		 */
 		generate.setOnAction( (event -> {
 			generator.generate( );
@@ -112,7 +117,6 @@ public class MainViewController implements IMonitorObserver {
 
 	@Override
 	public void update(int nMonitor, Integer value) {
-		System.out.println("Monitor: "+nMonitor+" Value: "+value);
 		switch( nMonitor )
 		{
 		case 1:

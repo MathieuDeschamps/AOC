@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import javax.xml.ws.WebServiceException;
-
 import application.ActiveObject.Interfaces.IAlgoDIffusion;
 import application.ActiveObject.Interfaces.IDiffusionGen;
 import application.ActiveObject.Interfaces.IGeneratorAsync;

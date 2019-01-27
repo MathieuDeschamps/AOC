@@ -1,7 +1,6 @@
 package application.ActiveObject.Interfaces;
 
 import java.util.List;
-import java.util.Observer;
 
 /**
  *

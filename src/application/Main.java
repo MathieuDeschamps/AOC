@@ -1,13 +1,17 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
-
+/**
+ * 
+ * @author DESCHAMPS Mathieu && LARZILLIERE Charles
+ * Main of our JavaFx application
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
@@ -18,6 +22,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("AOC Project");
 			primaryStage.setResizable(false);
+			primaryStage.setOnCloseRequest( event -> Platform.exit());
 			primaryStage.show();	
 		} catch(Exception e) {
 			e.printStackTrace();
